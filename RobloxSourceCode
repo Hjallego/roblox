@@ -20,7 +20,7 @@
     {
     "@context" : "http://schema.org",
     "@type" : "Organization",
-    "name" : "Roblox",
+    "name" : "I hacked ur game",
     "url" : "https://www.roblox.com/",
     "logo": "https://images.rbxcdn.com/cece570e37aa8f95a450ab0484a18d91",
     "sameAs" : [
@@ -36,7 +36,7 @@
 </script>
 <meta name="locale-data" 
       data-language-code="en_us" 
-      data-language-name="English" /><meta name="device-meta"
+      data-language-name="english" /><meta name="device-meta"
       data-device-type="computer"
       data-is-in-app="false"
       data-is-desktop="true"
@@ -122,35 +122,10 @@ Roblox.BundleDetector = (function () {
             return new Date().getTime();
         },
 
-        getCdnProviderName: function (bundleUrl, callBack) {
+        getCdnProviderName: function
             if (Roblox.BundleVerifierConstants.cdnLoggingEnabled) {
                 var xhr = new XMLHttpRequest();
-                xhr.open('GET', bundleUrl, true);
 
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === xhr.HEADERS_RECEIVED) {
-                        try {
-                            var headerValue = xhr.getResponseHeader("rbx-cdn-provider");
-                            if (headerValue) {
-                                callBack(headerValue);
-                            } else {
-                                callBack();
-                            }
-                        } catch (e) {
-                            callBack();
-                        }
-                    }
-                };
-
-                xhr.onerror = function () {
-                    callBack();
-                };
-
-                xhr.send();
-            } else {
-                callBack();
-            }
-        },
 
         getCdnProviderAndReportMetrics: function (bundleUrl, bundleName, loadState, bundleContentType) {
             this.getCdnProviderName(bundleUrl, function (cdnProviderName) {
